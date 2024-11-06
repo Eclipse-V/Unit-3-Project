@@ -146,7 +146,7 @@ public class Main
 
         else if (whichResponse == 4)
         {
-            response = "Give me a research paper on why.";
+            response = "Yeah.";
         } 
         else if (whichResponse == 5)
         {

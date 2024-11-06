@@ -28,7 +28,7 @@ public class Main
         }
     }
     
-    /**hello
+    /**
      * Gives a response to a user statement
      * 
      * @param statement

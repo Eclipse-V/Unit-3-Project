@@ -16,6 +16,7 @@ public class Main
     public static void main(String[] args)
     {
         System.out.println ("Hello, let's talk!");
+        @SuppressWarnings("resource")
         Scanner in = new Scanner (System.in);
         String statement = in.nextLine();
         //Uses a while statement - we will learn this next unit!
@@ -145,11 +146,11 @@ public class Main
 
         else if (whichResponse == 4)
         {
-            response = "Give me a research paper on why you don't like it.";
+            response = "Give me a research paper on why.";
         } 
         else if (whichResponse == 5)
         {
-            response = "You don't say.";
+            response = "I don't like that response.";
         }
 
         return response;

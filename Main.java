@@ -1,3 +1,4 @@
+//Name: Eclipse and Tania
 import java.util.Scanner;
 /**
  * A program to carry on conversations with a human user.

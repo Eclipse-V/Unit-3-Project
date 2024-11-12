@@ -85,10 +85,10 @@ public class Main
         {    
             response = "You're a pushover.";
         }
-        //If a statement contains the word "study", it asks for more info
+        //If a statement contains the word "study", it asks why the user told them
         else if (findKeyword(statement, "study", 0) >= 0)
         {    
-            response = "Tell me more about it.";
+            response = "Why are you telling me?";
         }
 
         //Do not change anything else in this method below here until part 5 and 6

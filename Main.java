@@ -1,4 +1,3 @@
-//Name: Eclipse and Tania
 import java.util.Scanner;
 /**
  * A program to carry on conversations with a human user.
@@ -64,6 +63,7 @@ public class Main
             response = "Tell me more about your pets.";
         }
         
+        //If a statement contains the name of a loved teacher, it responds favorably
         else if (findKeyword(statement, "Mr.", 0) >= 0)
         {    
             response = "He sounds like a good teacher.";
@@ -75,36 +75,36 @@ public class Main
         {    
             response = "She sounds like a good teacher.";
         }
-
+        //If a statement contains the word "fun", it asks for more info
         else if (findKeyword(statement, "fun", 0) >= 0)
         {    
             response = "What did you do?";
         }
-
+        //If a statement contains the word "yes", it gives a statement
         else if (findKeyword(statement, "yes", 0) >= 0)
         {    
             response = "You're a pushover.";
         }
-
+        //If a statement contains the word "study", it asks for more info
         else if (findKeyword(statement, "study", 0) >= 0)
         {    
             response = "Tell me more about it.";
         }
 
         //Do not change anything else in this method below here until part 5 and 6
-        else if (findKeyword(statement, "I want to", 0) >= 0)
+        else if (findKeyword(statement, "I want", 0) >= 0)
         {
             response = transformIWantToStatement(statement);
         }
 
         else
         {
-            // Look for a two word (you <something> me)
+            // Look for a two word (I <something> you)
             // pattern
-            int psn = findKeyword(statement, "you", 0);
+            int psn = findKeyword(statement, "I", 0);
 
             if (psn >= 0
-                    && findKeyword(statement, "me", psn) >= 0)
+                    && findKeyword(statement, "you", psn) >= 0)
             {
                 response = transformYouMeStatement(statement);
             }
@@ -158,9 +158,9 @@ public class Main
     }
     
     /**
-     * Take a statement with "I want to <something>." and transform it into 
-     * "What would it mean to <something>?"
-     * @param statement the user statement, assumed to contain "I want to"
+     * Take a statement with "I want <something>." and transform it into 
+     * Would you really be happy if you had <something>?”
+     * @param statement the user statement, assumed to contain "I want"
      * @return the transformed statement
      */
     private static String transformIWantToStatement(String statement)
@@ -173,15 +173,15 @@ public class Main
         {
             statement = statement.substring(0, statement.length() - 1);
         }
-        int psn = findKeyword (statement, "I want to", 0);
-        String restOfStatement = statement.substring(psn + 9).trim();
-        return "What would it mean to " + restOfStatement + "?";
+        int psn = findKeyword (statement, "I want", 0);
+        String restOfStatement = statement.substring(psn + 7).trim();
+        return "Would you really be happy if you had " + restOfStatement + "?";
     }
 
     /**
-     * Take a statement with "you <something> me" and transform it into 
-     * "What makes you think that I <something> you?"
-     * @param statement the user statement, assumed to contain "you" followed by "me"
+     * Take a statement with "I <something> you" and transform it into 
+     * “Why do you <something> me?”
+     * @param statement the user statement, assumed to contain "I" followed by "you"
      * @return the transformed statement
      */
     private static String transformYouMeStatement(String statement)
@@ -195,11 +195,11 @@ public class Main
             statement = statement.substring(0, statement.length() - 1);
         }
         
-        int psnOfYou = findKeyword (statement, "you", 0);
-        int psnOfMe = findKeyword (statement, "me", psnOfYou + 3);
+        int psnOfYou = findKeyword (statement, "I", 0);
+        int psnOfMe = findKeyword (statement, "you", psnOfYou + 3);
         
-        String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-        return "What makes you think that I " + restOfStatement + " you?";
+        String restOfStatement = statement.substring(psnOfYou + 2, psnOfMe).trim();
+        return "Why do you " + restOfStatement + " me?";
     }
     
     

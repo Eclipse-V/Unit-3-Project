@@ -106,10 +106,12 @@ public class Main
             // pattern
             int psn = findKeyword(statement, "I", 0);
 
+            //If "you" is found, the response in transformYouMeStatement() is given
             if (psn >= 0 && findKeyword(statement, "you", psn) >= 0)
             {
                 response = transformYouMeStatement(statement);
-            }
+            } 
+            //If "you" is not found, a random response is given
             else 
             { 
                 response = getRandomResponse();

@@ -43,17 +43,6 @@ public class Main
             response = "Say something, please.";
         }
 
-        else if (findKeyword(statement, "no", 0) >= 0)
-        {
-            response = "Why so negative?";
-        }
-        else if (findKeyword(statement, "mother", 0) >= 0
-                || findKeyword(statement, "father", 0) >= 0
-                || findKeyword(statement, "sister", 0) >= 0
-                    || findKeyword(statement, "brother", 0) >= 0)
-        {
-            response = "Tell me more about your family.";
-        }
         //Complete Part 3 below
         
         //If a statement contains the word "dog" or "cat", it asks for more info
@@ -62,19 +51,19 @@ public class Main
         {    
             response = "Tell me more about your pets.";
         }
-        
+
         //If a statement contains the name of a loved teacher, it responds favorably
         else if (findKeyword(statement, "Mr.", 0) >= 0)
         {    
             response = "He sounds like a good teacher.";
         }
-
         else if (findKeyword(statement, "Miss.", 0) >= 0
                 || findKeyword(statement, "Ms.", 0) >= 0
                 || findKeyword(statement, "Mrs.", 0) >= 0)
         {    
             response = "She sounds like a good teacher.";
         }
+       
         //If a statement contains the word "fun", it asks for more info
         else if (findKeyword(statement, "fun", 0) >= 0)
         {    
@@ -92,27 +81,41 @@ public class Main
         }
 
         //Do not change anything else in this method below here until part 5 and 6
+       
         else if (findKeyword(statement, "I want", 0) >= 0)
         {
             response = transformIWantToStatement(statement);
         }
 
+        else if (findKeyword(statement, "mother", 0) >= 0
+                || findKeyword(statement, "father", 0) >= 0
+                || findKeyword(statement, "sister", 0) >= 0
+                    || findKeyword(statement, "brother", 0) >= 0)
+        {
+            response = "Tell me more about your family.";
+        }
+
+        else if (findKeyword(statement, "no", 0) >= 0)
+        {
+            response = "Why so negative?";
+        }
+        
         else
         {
             // Look for a two word (I <something> you)
             // pattern
             int psn = findKeyword(statement, "I", 0);
 
-            if (psn >= 0
-                    && findKeyword(statement, "you", psn) >= 0)
+            if (psn >= 0 && findKeyword(statement, "you", psn) >= 0)
             {
                 response = transformYouMeStatement(statement);
             }
-            else
-            {
+            else 
+            { 
                 response = getRandomResponse();
             }
-        }
+        } 
+        
         return response;
     }
     
